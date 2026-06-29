@@ -1,10 +1,14 @@
+# Makefile for Terraform deployment
+
+
 # Terraform backend configuration
 BACKEND_CONFIG_BUCKET := "doc-samples-tf-backend"
-BACKEND_CONFIG_KEY := "terraform_state/python/scratch-event-timer.tf"
+BACKEND_CONFIG_KEY := "terraform_state/python/deploy-from-obs.tf"
 BACKEND_CONFIG_REGION := "eu-de"
 BACKEND_CONFIG_ENDPOINTS := "endpoints={s3=\"https://obs.eu-de.otc.t-systems.com\"}"
 
 CURRENT_MAKEFILE := $(firstword $(MAKEFILE_LIST))
+
 
 create_package:
 	python3 ../../utils/createZip.py
@@ -48,10 +52,10 @@ test_deployed:
 	@curl -X POST \
 	 -H "Content-Type: application/json" \
 	 -H "x-auth-token: $(OTC_X_AUTH_TOKEN)" \
-	 -d @./resources/test_event.json \
+	 -d '{"key":"Hello World of FunctionGraph"}' \
 	 https://functiongraph.$(OTC_SDK_REGION).otc.t-systems.com/v2/$(OTC_SDK_PROJECTID)/fgs/functions/$(MY_FUNCTION_URN):latest/invocations
 	@echo "" 
 	# finished
 
 
-.PHONY: create_package tf_init tf_plan tf_apply tf_destroy test_deployed
+.PHONY: create_package tf_init tf_plan tf_apply tf_destroy test_deployed test_deployed_apig_post

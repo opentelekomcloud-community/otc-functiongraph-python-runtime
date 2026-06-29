@@ -1,6 +1,6 @@
 # Terraform backend configuration
 BACKEND_CONFIG_BUCKET := "doc-samples-tf-backend"
-BACKEND_CONFIG_KEY := "terraform_state/python/scratch-event-timer.tf"
+BACKEND_CONFIG_KEY := "terraform_state/python/scratch-event-apig.tf"
 BACKEND_CONFIG_REGION := "eu-de"
 BACKEND_CONFIG_ENDPOINTS := "endpoints={s3=\"https://obs.eu-de.otc.t-systems.com\"}"
 
@@ -48,7 +48,7 @@ test_deployed:
 	@curl -X POST \
 	 -H "Content-Type: application/json" \
 	 -H "x-auth-token: $(OTC_X_AUTH_TOKEN)" \
-	 -d @./resources/test_event.json \
+	 -d @./resources/apig_event_json_b64.json \
 	 https://functiongraph.$(OTC_SDK_REGION).otc.t-systems.com/v2/$(OTC_SDK_PROJECTID)/fgs/functions/$(MY_FUNCTION_URN):latest/invocations
 	@echo "" 
 	# finished

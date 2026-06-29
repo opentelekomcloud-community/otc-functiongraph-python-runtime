@@ -5,19 +5,6 @@ Sample timer event handler for FunctionGraph.
 from fg_timer_event import TimerEvent
 
 
-def initializer(context, callback):
-    """
-    Initialization function called when the function is created.
-    
-    Args:
-        context: FunctionGraph execution context
-        callback: Callback function to signal completion
-    """
-    logger = context.getLogger()
-    logger.info("Function initialized")
-    callback(None, "")
-
-
 def handler(event, context):
     """
     Main handler function for the timer event.

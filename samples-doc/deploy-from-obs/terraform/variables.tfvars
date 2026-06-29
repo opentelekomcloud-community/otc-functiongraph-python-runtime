@@ -1,22 +1,22 @@
-# Terraform variables for scratch-event sample
+# Terraform variables
 
 # prefix of all resources
 prefix        = "python"
 
 # description of the function
-description = "Sample scratch-event"
+description = "deploy-from-obs sample"
 
 # name of the function (will be prefixed)
-function_name = "scratch-event"
+function_name = "deploy-from-obs"
 
 # handler function name defined in your code, e.g. "index.handler"
-handler_name = "index.handler"
+handler_name = "src/index.handler"
 
 # initializer function name defined in your code, e.g. "index.initializer"
-initializer_name = "index.initializer"
+initializer_name = "src/index.initializer"
 
 # name of zip file to deploy
-zip_file_name = "scratch-event.zip"
+zip_file_name = "../dist/code.zip"
 
 # resources will be tagged with this app_group tag
-tag_app_group = "scratch-event"
+tag_app_group = "deploy-from-obs"

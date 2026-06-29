@@ -7,6 +7,11 @@ FunctionGraph with Python:
 .. toctree::
    :maxdepth: 1
 
+   scratch-event <scratch-event/_index.md>
+   scratch-event-timer <scratch-event-timer/_index.md>
+   scratch-http-flask <scratch-http-flask/_index.md>
+   deploy-from-obs <deploy-from-obs/_index.md>
+
 
 
 Some samples are not documented yet.

@@ -1,0 +1,2 @@
+export PYTHONPATH=$RUNTIME_CODE_ROOT:$PYTHONPATH
+/opt/function/runtime/python3.10/rtsp/python/bin/python3 $RUNTIME_CODE_ROOT/src/index.py
