@@ -8,7 +8,7 @@ setup(
     name="fg-kafkaopensource-event",
     version="1.0.0",
     description="Kafka Open Source event class for FunctionGraph",
-    author="OpenTelekomCloud Community",
+    author="T Cloud Public Community",
     license="Apache License 2.0",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
