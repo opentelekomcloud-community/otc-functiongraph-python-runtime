@@ -77,6 +77,15 @@ tf_apply: docker_push
 	  -var-file="variables.tfvars" \
 		-var="image_url=$(OTC_SWR_ENDPOINT)/$(OTC_SWR_ORGANIZATION)/$(IMAGE_NAME):latest"
 
+tf_apply_no_push:
+	if [ ! -f "terraform/.terraform.lock.hcl" ]; then \
+		$(MAKE) -f $(CURRENT_MAKEFILE) tf_init; \
+	fi
+	terraform -chdir=terraform \
+	  apply -auto-approve \
+	  -var-file="variables.tfvars" \
+		-var="image_url=$(OTC_SWR_ENDPOINT)/$(OTC_SWR_ORGANIZATION)/$(IMAGE_NAME):latest"
+
 tf_destroy:
 	terraform -chdir=terraform \
 	  destroy -auto-approve \
@@ -86,29 +95,25 @@ tf_destroy:
 #############################################################################################
 # Test targets
 #############################################################################################
-test_local:
-  # execute a curl 
-	curl -X POST \
-	-H "X-Cff-Request-Id: $(shell uuidgen)" \
-	-H "X-Cff-Func-Name: 0@default@sample-container-http-fastapi" \
-	-H "X-Cff-Func-Version: latest" \
-	-H "X-Cff-Func-Timeout: 30" \
-	-H 'Content-Type: application/json' \
-	-d '{"key":"Hello World of FunctionGraph"}' localhost:8000/invoke
-	@echo ""
 
-test_deployed:
-  # getting Token for authentication from Username/Password...
-	$(eval OTC_X_AUTH_TOKEN := $(shell ../../utils/tokenFromUsername.sh))
-	# getting the Function URN from terraform output...
-	$(eval MY_FUNCTION_URN := $(shell terraform -chdir=terraform output -raw MY_FUNCTION_URN))
-	# calling the deployed function via FunctionGraph API...
-	@curl -X POST \
-	 -H "Content-Type: application/json" \
-	 -H "x-auth-token: $(OTC_X_AUTH_TOKEN)" \
-	 -d '{"key":"Hello World of FunctionGraph"}' \
-	 https://functiongraph.$(OTC_SDK_REGION).otc.t-systems.com/v2/$(OTC_SDK_PROJECTID)/fgs/functions/$(MY_FUNCTION_URN):latest/invocations
+test_deployed_apig_get:
+	# get the API Gateway URL from terraform output
+	$(eval API_GATEWAY_TRIGGER_URL := $(shell terraform -chdir=terraform output -raw API_GATEWAY_TRIGGER_URL))
+	@echo "Using API Gateway URL: $(API_GATEWAY_TRIGGER_URL)"
+	# execute a curl request against the deployed function via API Gateway
+	curl -X GET \
+	   -H 'Content-Type: application/json' \
+		 $(API_GATEWAY_TRIGGER_URL)
 	@echo "" 
-	# finished
+
+test_deployed_apig_getitem:
+	# get the API Gateway URL from terraform output
+	$(eval API_GATEWAY_TRIGGER_URL := $(shell terraform -chdir=terraform output -raw API_GATEWAY_TRIGGER_URL))
+	@echo "Using API Gateway URL: $(API_GATEWAY_TRIGGER_URL)"
+	# execute a curl request against the deployed function via API Gateway
+	curl -X GET \
+	   -H 'Content-Type: application/json' \
+		 $(API_GATEWAY_TRIGGER_URL)/api/items/100?q=10
+	@echo "" 
 
 .PHONY: build run_local docker_build docker_run_local docker_push docker_all test_local test_deployed clean tf_init tf_plan tf_apply tf_destroy

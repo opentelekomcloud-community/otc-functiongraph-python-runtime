@@ -55,8 +55,8 @@ resource "opentelekomcloud_apigw_api_v2" "api1" {
   func_graph {
     function_urn    = opentelekomcloud_fgs_function_v2.MyFunction.urn
     version         = "latest"
-    timeout         = 5000
-    invocation_type = "async"
+    timeout         = 30000
+    invocation_type = "sync"
     network_type    = "NON-VPC"
   }
 
@@ -65,11 +65,19 @@ resource "opentelekomcloud_apigw_api_v2" "api1" {
 ##########################################################
 # Publish API to specific environment
 ##########################################################
-resource "opentelekomcloud_apigw_api_publishment_v2" "default" {
+resource "opentelekomcloud_apigw_api_publishment_v2" "default" {  
   gateway_id     = local.API_GATEWAY_INSTANCE_ID
   environment_id = local.ENV_ID
   api_id         = opentelekomcloud_apigw_api_v2.api1.id
   version_id     = opentelekomcloud_apigw_api_v2.api1.version
+
+  # force publishing on change of api
+  lifecycle {
+    replace_triggered_by = [
+      opentelekomcloud_apigw_api_v2.api1
+    ]
+  }
+
 }
 
 output "API_GATEWAY_TRIGGER_URL" {

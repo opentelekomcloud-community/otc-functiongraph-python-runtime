@@ -1,5 +1,5 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse
 
 from fastapi.openapi.docs import get_swagger_ui_html, get_redoc_html
@@ -7,18 +7,21 @@ from fastapi.middleware.cors import CORSMiddleware
 
 import logging
 import logging.config
-from requests import Request
 from api.items import items_router
 from asgi_correlation_id import CorrelationIdMiddleware, correlation_id
 import time
 
-from fastapi import HTTPException
 from fastapi.exception_handlers import http_exception_handler
 from fastapi.responses import JSONResponse
 
 import traceback
+import os
 
-ROOT_LEVEL = "DEBUG"
+ROOT_LEVEL = os.environ.get("RUNTIME_LOG_LEVEL", "DEBUG").upper()
+
+
+class UTCFormatter(logging.Formatter):
+    converter = time.gmtime
 
 LOGGING_CONFIG = {
     "version": 1,
@@ -32,12 +35,14 @@ LOGGING_CONFIG = {
     },
     "formatters": {
         "standard": {
-            "format": "%(asctime)s [%(levelname)s] [%(correlation_id)s] %(name)s: %(message)s"
+            "()": UTCFormatter,
+            "format": "%(asctime)s.%(msecs)03dZ [%(levelname)s] [%(correlation_id)s] %(name)s: %(message)s",
+            "datefmt": "%Y-%m-%dT%H:%M:%S",
         },
     },
     "handlers": {
         "default": {
-            "level": "INFO",
+            "level": ROOT_LEVEL,
             "formatter": "standard",
             "class": "logging.StreamHandler",
             "filters": ["correlation_id"],
@@ -51,12 +56,13 @@ LOGGING_CONFIG = {
             "propagate": False,
         },
         "uvicorn.error": {
-            "level": "DEBUG",
+            "level": "INFO",
             "handlers": ["default"],
         },
         "uvicorn.access": {
-            "level": "DEBUG",
+            "level": ROOT_LEVEL,
             "handlers": ["default"],
+            "propagate": False,
         },
     },
 }
@@ -134,25 +140,41 @@ app.add_middleware(
     allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=[
-        "X-Requested-With",
-        "X-Request-ID",
-        "x-cff-request-id",
+        # "X-Requested-With",
+        # "X-Request-ID",
+        # "x-cff-request-id",
+        # "x-cff-security-access-key",
+        # "x-cff-security-secret-key",
+        # "x-cff-security-token",
         "Access-Control-Allow-Origin",
         "Access-Control-Expose-Headers",
     ],
     expose_headers=[
-        "X-Request-ID",
-        "x-cff-request-id",
+        # "X-Request-ID",
+        # "x-cff-request-id",
         "Access-Control-Allow-Origin",
         "Access-Control-Expose-Headers",
     ],
 )
 
-
 @app.get("/")
-def read_root():
-    logging.info("Debug hello")
-    return {"Hello": "World"}
+def read_root(request: Request):
+    headers = request.headers
+    logging.debug("Debug hello")
+
+    logging.debug("Request headers: %s", dict(headers))
+    
+    ak = headers.get("x-cff-security-access-key")
+    sk = headers.get("x-cff-security-secret-key")
+    st = headers.get("x-cff-security-token")
+    token = headers.get("x-cff-auth-token")
+    
+    if ak and ak != "null":
+        logging.info("Access Key is: %s", ak)
+    else:
+        logging.error("NO AGENCY SPECIFIED OR KEYS NOT INCLUDED")
+        
+    return {"Hello": "World", "Agency ok": ak is not None and ak != "null", "Request ID": correlation_id.get() or ""}
 
 
 @app.get("/favicon.ico", include_in_schema=False)
@@ -167,4 +189,5 @@ app.include_router(items_router, prefix="/api", tags=["API"])
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("app:app", port=8000, log_level="debug", reload=True, host="localhost")
+    #uvicorn.run("app:app", port=8000, log_level="debug", reload=True, host="localhost")
+    uvicorn.run("app:app", host="0.0.0.0", port=8000, log_level="debug", log_config=LOGGING_CONFIG, reload=False)

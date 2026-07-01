@@ -1,8 +1,9 @@
-FROM python:3.10-slim
+# syntax=docker/dockerfile:1.7
+FROM python:3.10-slim@sha256:5f9928ea39771e8ddf4fb9a96ab24f65f087793635614405a1dc9384f040852e
 
 ENV HOME=/home/paas_user
 ENV PYTHONDONTWRITEBYTECODE=1
-ENV PIP_NO_CACHE_DIR=1
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 
 ENV GROUP_ID=1003
 ENV GROUP_NAME=paas_user
@@ -22,7 +23,8 @@ RUN groupadd -g ${GROUP_ID} ${GROUP_NAME} && \
 # Copy requirements.txt
 COPY --chown=${USER_ID}:${GROUP_ID} ./requirements.txt ${HOME}/requirements.txt
 
-RUN python -m pip install --no-compile -r ${HOME}/requirements.txt
+RUN --mount=type=cache,target=/root/.cache/pip \
+    python -m pip install --no-compile -r ${HOME}/requirements.txt
 
 # Copy application files after dependencies for better layer caching.
 COPY --chown=${USER_ID}:${GROUP_ID} ./src ${HOME}/src
