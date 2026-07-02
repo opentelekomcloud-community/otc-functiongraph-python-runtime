@@ -11,5 +11,5 @@ FunctionGraph supports packaging Python functions as zip files.
 
 This packaging method is suitable for both event and HTTP functions created from scratch.
 
-To package your Python function as a zip file, you can use npm scripts to automate the packaging process.
+To package your Python function as a zip file, you can use:
 

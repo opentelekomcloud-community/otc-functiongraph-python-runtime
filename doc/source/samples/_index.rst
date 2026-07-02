@@ -10,7 +10,10 @@ FunctionGraph with Python:
    scratch-event <scratch-event/_index.md>
    scratch-event-timer <scratch-event-timer/_index.md>
    scratch-http-flask <scratch-http-flask/_index.md>
-   deploy-from-obs <deploy-from-obs/_index.md>
+   deploy-from-obs <deploy-from-obs/_index.md>   
+   event-sdk-ecs <event-sdk-ecs/_index.md>
+   event-sdk-obs <event-sdk-obs/_index.md>
+   event-obs-s3-thumbnail <event-obss3-thumbnail/_index.md>
 
 
 

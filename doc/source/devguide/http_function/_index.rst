@@ -85,13 +85,13 @@ by functions by default.
      - Project ID of the function.
 
        .. note:: **x-cff-project-id in the header currently returns always "sn".** 
-          (see :github-issue:`Issue #6 <6>`)
 
           To get correct Project ID use instead:
 
-          .. code-block:: javascript
+          .. code-block:: python
 
-              const region = process.env.RUNTIME_PROJECT_ID;
+              region = os.environ.get("RUNTIME_PROJECT_ID")
+
 
    * - x-cff-package
      - App to which the function belongs.
@@ -99,14 +99,13 @@ by functions by default.
      - Region where the function is located.
 
        .. note:: **x-cff-region in the header currently returns always "cn".** 
-          (see :github-issue:`Issue #6 <6>`)
 
           To get correct region define a environment variable REGION 
           with correct region value and use e.g.:
             
-          .. code-block:: javascript
+          .. code-block:: python
 
-              const region = process.env.REGION || "eu-de";
+              region = os.environ.get("REGION", "eu-de")
   
 
 .. note::

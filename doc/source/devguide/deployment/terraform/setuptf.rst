@@ -115,7 +115,7 @@ Adapt values for:
 * ``key`` - this is the path and name in the bucket of the terraform state file
 * ``s3``  - configure OBS endpoint according to your tenant
 
-.. literalinclude:: /../../samples-doc/scratch-event-sync/terraform/provider.tf
+.. literalinclude:: /../../samples-doc/scratch-event/terraform/provider.tf
    :language: terraform
    :caption: provider.tf
 
