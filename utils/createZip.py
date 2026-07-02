@@ -4,17 +4,25 @@
 # - create dependencies if requirements.txt changed
 # - create zip file with code from src and dependencies
 #
+# Output will be written to dist folder.
+# Default output zip filename is code.zip,
+# can be changed with -o option
+#
 # The zip file will have the following structure:
 # .
 # ├── src
 # │   ├── FILE1.py
 # │   └── ...
+# ├── bootstrap (optional)
+# ├── README.md (optional)
+# ├── LICENSE (optional)
 # └── <installed packages from requirements.txt> 
 #
 #######################################################################
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import os
 import shutil
@@ -32,7 +40,7 @@ DEPENDENCIES_DIR = DIST_DIR / "dependencies"
 VENV_DIR = DIST_DIR / ".venv_dest"
 REQUIREMENTS_FILE = ROOT / "requirements.txt"
 REQUIREMENTS_HASH_FILE = DIST_DIR / ".requirements_hash"
-CODE_ZIP = DIST_DIR / "code.zip"
+DEFAULT_CODE_ZIP_NAME = "code.zip"
 OPTIONAL_FILES = ("README.md", "LICENSE", "bootstrap")
 
 
@@ -132,8 +140,9 @@ def add_tree(zip_file: ZipFile, base_dir: Path, arc_prefix: str = "") -> None:
         zip_file.write(path, archive_path.as_posix())
 
 
-def build_package() -> None:
+def build_package(output_filename: str = DEFAULT_CODE_ZIP_NAME) -> None:
     DIST_DIR.mkdir(exist_ok=True)
+    code_zip = DIST_DIR / output_filename
 
     new_hash = requirements_fingerprint()
     if requirements_changed(new_hash):
@@ -143,7 +152,7 @@ def build_package() -> None:
     else:
         print("No changes in requirements.txt, skipping venv creation.")
 
-    with ZipFile(CODE_ZIP, "w", compression=ZIP_DEFLATED) as zip_file:
+    with ZipFile(code_zip, "w", compression=ZIP_DEFLATED) as zip_file:
         add_tree(zip_file, ROOT / "src", "src")
         if DEPENDENCIES_DIR.exists():
             add_tree(zip_file, DEPENDENCIES_DIR)
@@ -153,8 +162,22 @@ def build_package() -> None:
             if path.is_file():
                 zip_file.write(path, name)
 
-    print(f"Packaged code and dependencies into {CODE_ZIP.relative_to(ROOT)}")
+    print(f"Packaged code and dependencies into {code_zip.relative_to(ROOT)}")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Package function source and dependencies into a zip archive."
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        default=DEFAULT_CODE_ZIP_NAME,
+        help="Output zip filename under dist/ (default: code.zip)",
+    )
+    return parser.parse_args()
 
 
 if __name__ == "__main__":
-    build_package()
+    args = parse_args()
+    build_package(args.output)
