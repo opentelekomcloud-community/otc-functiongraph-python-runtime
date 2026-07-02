@@ -1,0 +1,4 @@
+pillow==12.3.0
+esdk-obs-python @ git+https://github.com/opentelekomcloud-community/obs-python-sdk.git#subdirectory=src
+#../../fg-events/fg-timer-event
+fg-obss3-event @ git+https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime.git@main#subdirectory=fg-events/fg-obss3-event
