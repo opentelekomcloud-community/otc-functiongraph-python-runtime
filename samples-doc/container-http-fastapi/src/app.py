@@ -7,6 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 import logging
 import logging.config
+
+from pydantic import BaseModel
 from api.items import items_router
 from asgi_correlation_id import CorrelationIdMiddleware, correlation_id
 import time
@@ -58,6 +60,7 @@ LOGGING_CONFIG = {
         "uvicorn.error": {
             "level": "INFO",
             "handlers": ["default"],
+            "propagate": False,
         },
         "uvicorn.access": {
             "level": ROOT_LEVEL,
@@ -96,14 +99,14 @@ app = FastAPI(
 
 
 @app.get("/docs", include_in_schema=False)
-def overridden_swagger():
+async def overridden_swagger():
     return get_swagger_ui_html(
         openapi_url=app.openapi_url, title=app.title, swagger_favicon_url="/favicon.ico"
     )
 
 
 @app.get("/redoc", include_in_schema=False)
-def overridden_redoc():
+async def overridden_redoc():
     return get_redoc_html(
         openapi_url=app.openapi_url, title=app.title, redoc_favicon_url="/favicon.ico"
     )
@@ -158,7 +161,7 @@ app.add_middleware(
 )
 
 @app.get("/")
-def read_root(request: Request):
+async def read_root(request: Request):
     headers = request.headers
     logging.debug("Debug hello")
 
@@ -176,6 +179,29 @@ def read_root(request: Request):
         
     return {"Hello": "World", "Agency ok": ak is not None and ak != "null", "Request ID": correlation_id.get() or ""}
 
+@app.get("/index")
+async def get_index(request: Request):
+    
+    logger.debug("Received GET request with query: %s", request.query_params)
+    
+    name = request.query_params.get("name", "unknown")
+        
+    return {"message": f"Hello, {name}!"}
+
+
+class Message(BaseModel):
+    name: str
+
+@app.post("/index")
+async def post_index(request: Request, message: Message):
+  
+    body = await request.body()
+    logger.info("Received POST request with body: %s", body)
+    
+    name = message.name
+        
+    return {"message": f"Hello, {name}!"}
+    
 
 @app.get("/favicon.ico", include_in_schema=False)
 async def favicon():
@@ -188,6 +214,12 @@ app.include_router(items_router, prefix="/api", tags=["API"])
 
 if __name__ == "__main__":
     import uvicorn
+    
+    if os.environ.get("IS_DOCKER_CONTAINER", "0") == "1":
+        # running in docker container
+        uvicorn.run("app:app", host="0.0.0.0", port=8000, log_level="debug", log_config=LOGGING_CONFIG, reload=False)
+    else:
+        # running locally
+        uvicorn.run("app:app", host="localhost", port=8000, log_level="debug", log_config=LOGGING_CONFIG, reload=True)
 
-    #uvicorn.run("app:app", port=8000, log_level="debug", reload=True, host="localhost")
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, log_level="debug", log_config=LOGGING_CONFIG, reload=False)
+

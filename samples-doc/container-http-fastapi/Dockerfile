@@ -14,6 +14,8 @@ ENV USER_NAME=paas_user
 # Set timezone to UTC
 ENV TZ=Etc/UTC
 
+ENV IS_DOCKER_CONTAINER=1
+
 RUN groupadd -g ${GROUP_ID} ${GROUP_NAME} && \
     useradd -u ${USER_ID} -g ${GROUP_ID} ${USER_NAME} && \
     mkdir -p ${HOME} && \

@@ -169,7 +169,7 @@ Build the image either using **docker build** or the Makefile target **docker_bu
          docker buildx build \
             --platform linux/amd64 \
             --file Dockerfile.node \
-            --tag custom_container_http_koa_nodejs:latest .
+            --tag custom_container_http_fastapi-python:latest .
 
 
   .. tab:: using Makefile target "docker_build"
@@ -217,20 +217,20 @@ Test the image either using **curl** or the Makefile target **test_local**:
 
       .. code-block:: shell
 
-         curl -X POST -H 'Content-Type: application/json' -d '{"key":"Hello World of FunctionGraph"}' localhost:8000/index
+         curl -X POST -H 'Content-Type: application/json' -d '{"name":"T Cloud Public"}' localhost:8000/index
 
   .. tab:: using Makefile target "test_local"
       Run the following command in a new terminal to test the image:
 
       .. code-block:: shell
 
-         make test_local
+         make test_local_post_index
 
 You should see output similar to the following:
 
 .. code-block:: text
 
-    Hello World, user!
+    {"message":"Hello, T Cloud Public!"}
 
 
 Step 3: Upload the Container Image to SWR (SoftWare Repository for Container)
@@ -409,7 +409,7 @@ Test event for GET /index
 - set **Event Name** to **get_index**,
 -  modify the test event as follows,
 
-      .. literalinclude:: ../../../../../samples-doc/container-http-koa/resources/apig_get_index.json
+      .. literalinclude:: ../../../../../samples-doc/container-http-fastapi/resources/apig_get_index.json
         :language: json
         :caption: **Test event for GET /index**
 
@@ -421,7 +421,7 @@ Test event for POST /index
 - set **Event Name** to **post_index**,
 -  modify the test event as follows,
 
-      .. literalinclude:: ../../../../../samples-doc/container-http-koa/resources/apig_post_index.json
+      .. literalinclude:: ../../../../../samples-doc/container-http-fastapi/resources/apig_post_index.json
         :language: json
         :caption: **Test event for POST /index**
 

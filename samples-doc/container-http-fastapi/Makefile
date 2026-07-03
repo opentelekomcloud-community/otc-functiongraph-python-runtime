@@ -96,6 +96,31 @@ tf_destroy:
 # Test targets
 #############################################################################################
 
+test_local_get_index:
+	# execute a curl request against the local function
+	curl -X GET \
+	   -H 'Content-Type: application/json' \
+		 http://localhost:8000/index?name=John
+	@echo ""
+
+test_local_post_index:
+	# execute a curl request against the local function
+	curl -X POST \
+	   -H 'Content-Type: application/json' \
+		 -d @./resources/curl_apig_post_index.json \
+		 http://localhost:8000/index
+	@echo ""
+
+test_deployed_apig_post:
+	# get the API Gateway URL from terraform output
+	$(eval API_GATEWAY_TRIGGER_URL := $(shell terraform -chdir=terraform output -raw API_GATEWAY_TRIGGER_URL))
+	@echo "Using API Gateway URL: $(API_GATEWAY_TRIGGER_URL)"
+	# execute a curl request against the deployed function via API Gateway
+	curl -X POST \
+	   -H 'Content-Type: application/json' \
+		 -d @./resources/curl_apig_post_index.json \
+		 $(API_GATEWAY_TRIGGER_URL)/index
+
 test_deployed_apig_get:
 	# get the API Gateway URL from terraform output
 	$(eval API_GATEWAY_TRIGGER_URL := $(shell terraform -chdir=terraform output -raw API_GATEWAY_TRIGGER_URL))
