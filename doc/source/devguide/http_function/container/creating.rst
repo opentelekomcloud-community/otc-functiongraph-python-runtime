@@ -168,7 +168,7 @@ Build the image either using **docker build** or the Makefile target **docker_bu
 
          docker buildx build \
             --platform linux/amd64 \
-            --file Dockerfile.node \
+            --file Dockerfile \
             --tag custom_container_http_fastapi-python:latest .
 
 

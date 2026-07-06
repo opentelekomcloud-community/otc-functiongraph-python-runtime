@@ -6,7 +6,7 @@ Building FunctionGraph HTTP Functions from container image
 Set up development environment
 --------------------------------
 
-Additional to the instructions in :ref:`building_with_nodejs`, to build and run
+Additional to the instructions in :ref:`building_with_python`, to build and run
 FunctionGraph with container image, you need to install Docker.
 
 See `Get Docker <https://docs.docker.com/get-docker/>`_ for instructions

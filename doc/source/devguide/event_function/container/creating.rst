@@ -173,7 +173,7 @@ Create a **Dockerfile** in the project root folder to define the image.
     depending on the application requirements.
 
 
-Following example uses an Alpine base image with Node.js installed.
+Following example uses the Python 3.10-slim image from `Docker Hub <https://hub.docker.com/_/python>`_.
 
 .. literalinclude:: ../../../../../samples-doc/container-event-flask/Dockerfile
    :language: docker

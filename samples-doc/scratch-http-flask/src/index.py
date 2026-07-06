@@ -34,8 +34,8 @@ def index():
 # Main program entry
 if __name__ == '__main__':
     # dev server:
-    # app.run(host="0.0.0.0", port=8000)
+    app.run(host="localhost", port=8000)
     
     # production server using waitress:
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=8000)
+    #from waitress import serve
+    #serve(app, host="0.0.0.0", port=8000)

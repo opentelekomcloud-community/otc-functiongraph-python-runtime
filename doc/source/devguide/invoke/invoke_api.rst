@@ -23,7 +23,7 @@ Using AK/SK authentication for API calls
 Using AK/SK authentication the
 requests have to be signed with the AK/SK (or for temporal credentials with SecurityAccessKey/SecurityKey/SecurityToken).
 
-For request signing the :github_otc_community:`otc-api-sign-sdk-nodejs <otc-api-sign-sdk-nodejs>` can be used.
+For request signing the :github_otc_community:`otc-api-sign-sdk-python <otc-api-sign-sdk-python>` can be used.
 
 The SDK provides a method to sign the request with AK/SK or SecurityAccessKey/SecurityKey/SecurityToken.
 

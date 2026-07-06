@@ -8,8 +8,6 @@ FunctionGraph.
    :maxdepth: 10
    :hidden:
 
-
-
    Building with Python <devguide/_index>
    Concepts <devguide/concepts/_index>
    Deployment <devguide/deployment/_index>

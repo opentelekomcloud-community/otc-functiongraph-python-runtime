@@ -61,11 +61,11 @@ Parameter description
      - String
      - Event source: **smn**
 
-Example
--------
+.. Example
+.. -------
 
-.. literalinclude:: /../../samples-doc/scratch-event-smn/src/index.py
-    :language: python
-    :caption: :github_repo_master:`index.py <samples-doc/scratch-event-smn/src/index.py>`
+.. .. literalinclude:: /../../samples-doc/scratch-event-smn/src/index.py
+..     :language: python
+..     :caption: :github_repo_master:`index.py <samples-doc/scratch-event-smn/src/index.py>`
 
-Full sample code is available in the :github_repo_master:`samples-doc/scratch-event-smn`.
+.. Full sample code is available in the :github_repo_master:`samples-doc/scratch-event-smn`.

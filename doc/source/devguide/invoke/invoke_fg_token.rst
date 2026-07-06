@@ -22,9 +22,9 @@ Prerequisites
 1. URN of Function to be called.
    In this example the code of the function to be called is:
 
-   .. literalinclude:: ../../../../samples-doc/invoke-fg-token/src-fg/index.py
+   .. literalinclude:: ../../../../samples-doc/invoke-fg2fg-token/src-fg/index.py
       :language: python
-      :caption: :github_repo_master:`samples-doc/invoke-fg-token/src-fg/index.py <samples-doc/invoke-fg-token/src-fg/index.py>`
+      :caption: :github_repo_master:`samples-doc/invoke-fg2fg-token/src-fg/index.py <samples-doc/invoke-fg2fg-token/src-fg/index.py>`
 
 
    .. note::
