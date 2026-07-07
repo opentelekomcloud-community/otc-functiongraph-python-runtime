@@ -11,14 +11,14 @@ class APIGEvent:
     Represents an API Gateway event for FunctionGraph.
     
     Attributes:
-        body (str): The request body
-        isBase64Encoded (bool): Whether the body is base64 encoded
-        requestContext (dict): Request context information
-        queryStringParameters (dict): Query string parameters
-        httpMethod (str): HTTP method
-        pathParameters (dict): Path parameters
-        headers (dict): Request headers
-        path (str): Request path
+        - body (str): The request body
+        - isBase64Encoded (bool): Whether the body is base64 encoded
+        - requestContext (dict): Request context information
+        - queryStringParameters (dict): Query string parameters
+        - httpMethod (str): HTTP method
+        - pathParameters (dict): Path parameters
+        - headers (dict): Request headers
+        - path (str): Request path
     """
 
     def __init__(self, event):

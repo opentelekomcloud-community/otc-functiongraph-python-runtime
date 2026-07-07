@@ -1,0 +1,2 @@
+#../../fg-events/fg-dms4kafka-event
+fg-dms4kafka-event @ git+https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime.git@main#subdirectory=fg-events/fg-dms4kafka-event

@@ -188,3 +188,11 @@ For samples, see:
 
 * :ref:`Scratch Event Function generating Thumbnails <event-obss3-thumbnail>`.
 * :ref:`Scratch Event Function using OBS SDK <event-sdk-obs>`.
+
+Package description
+-------------------
+
+.. automodule:: fg_obss3_event
+   :members:
+   :undoc-members:
+   :show-inheritance:

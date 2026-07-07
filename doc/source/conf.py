@@ -16,6 +16,7 @@ import sys
 import warnings
 from git import Repo
 from datetime import datetime
+from pathlib import Path
 
 # -- General configuration ----------------------------------------------------
 
@@ -69,6 +70,48 @@ sys.path.insert(0, os.path.abspath("../../"))
 sys.path.insert(0, os.path.abspath("../"))
 sys.path.insert(0, os.path.abspath("./"))
 sys.path.insert(0, os.path.abspath(".."))
+
+BASE_DIR = Path(__file__).parents[2]
+
+sys.path.append(str((BASE_DIR / 'fg-events')))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-apig-event' ))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-apig-event' / 'src'))
+
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-cts-event'))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-cts-event' / 'src' ))
+
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-dds-event'))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-dds-event' / 'src'))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-dds-event' / 'src' / 'fg_dds_event'))
+
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-dms4kafka-event' ))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-dms4kafka-event' / 'src'))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-dms4kafka-event' / 'src' / 'fg_dms4kafka_event'))
+
+
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-dms4rocketmq-event'))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-dms4rocketmq-event' / 'src'))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-dms4rocketmq-event' / 'src' / 'fg_dms4rocketmq_event'))
+
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-kafkaopensource-event' ))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-kafkaopensource-event' / 'src'))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-kafkaopensource-event' / 'src' / 'fg_kafkaopensource_event'))
+
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-lts-event' ))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-lts-event' / 'src'))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-lts-event' / 'src' / 'fg_lts_event'))
+
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-obss3-event' ))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-obss3-event' / 'src'))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-obss3-event' / 'src' / 'fg_obss3_event'))
+
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-smn-event' ))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-smn-event' / 'src'))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-smn-event' / 'src' / 'fg_smn_event'))
+
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-timer-event' ))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-timer-event' / 'src'))
+sys.path.append(str(BASE_DIR / 'fg-events' / 'fg-timer-event' / 'src' / 'fg_timer_event'))
 
 
 # TODO(shade) Set this to true once the build-openstack-sphinx-docs job is

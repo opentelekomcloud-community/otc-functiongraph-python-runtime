@@ -71,8 +71,16 @@ For full description of all parameters see
 Example
 -------
 
-.. .. literalinclude:: /../../samples-doc/scratch-event-cts/src/index.py
-..     :language: python
-..     :caption: :github_repo_master:`index.py <samples-doc/scratch-event-cts/src/index.py>`
+.. literalinclude:: /../../samples-doc/scratch-event-cts/src/index.py
+    :language: python
+    :caption: :github_repo_master:`index.py <samples-doc/scratch-event-cts/src/index.py>`
 
-.. Full sample code is available in the :github_repo_master:`samples-doc/scratch-event-cts`.
+Full sample code is available in the :github_repo_master:`samples-doc/scratch-event-cts`.
+
+Package description
+-------------------
+
+.. automodule:: fg_cts_event
+   :members:
+   :undoc-members:
+   :show-inheritance:

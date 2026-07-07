@@ -93,3 +93,12 @@ Example
 
 
 Full sample code is available in the :github_repo_master:`samples-doc/scratch-event-apig`.
+
+
+Package description
+-------------------
+
+.. automodule:: fg_apig_event
+   :members:
+   :undoc-members:
+   :show-inheritance:

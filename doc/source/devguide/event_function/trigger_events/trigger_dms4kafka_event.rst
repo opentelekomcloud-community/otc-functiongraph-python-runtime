@@ -52,11 +52,19 @@ Parameter description
      - String
      - Message ID
 
-.. Example
-.. -------
+Example
+-------
 
-.. .. literalinclude:: /../../samples-doc/scratch-event-dms4kafka/src/index.py
-..     :language: python
-..     :caption: :github_repo_master:`index.py <samples-doc/scratch-event-dms4kafka/src/index.py>`
+.. literalinclude:: /../../samples-doc/scratch-event-dms4kafka/src/index.py
+    :language: python
+    :caption: :github_repo_master:`index.py <samples-doc/scratch-event-dms4kafka/src/index.py>`
 
-.. Full sample code is available in the :github_repo_master:`samples-doc/scratch-event-dms4kafka`.
+Full sample code is available in the :github_repo_master:`samples-doc/scratch-event-dms4kafka`.
+
+Package description
+-------------------
+
+.. automodule:: fg_dms4kafka_event
+   :members:
+   :undoc-members:
+   :show-inheritance:

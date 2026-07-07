@@ -63,11 +63,19 @@ Parameter description
      - Event source ID
    
 
-.. Example
-.. -------
+Example
+-------
 
-.. .. literalinclude:: /../../samples-doc/scratch-event-dds/src/index.py
-..     :language: python
-..     :caption: :github_repo_master:`index.py <samples-doc/scratch-event-dds/src/index.py>`
+.. literalinclude:: /../../samples-doc/scratch-event-dds/src/index.py
+    :language: python
+    :caption: :github_repo_master:`index.py <samples-doc/scratch-event-dds/src/index.py>`
 
-.. Full sample code is available in the :github_repo_master:`samples-doc/scratch-event-dds`.
+Full sample code is available in the :github_repo_master:`samples-doc/scratch-event-dds`.
+
+Package description
+-------------------
+
+.. automodule:: fg_dds_event
+   :members:
+   :undoc-members:
+   :show-inheritance:

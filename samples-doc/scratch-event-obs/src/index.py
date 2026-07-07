@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
 Sample obs event handler for FunctionGraph.
 """
@@ -25,4 +27,9 @@ def handler(event, context):
     logger.info("OBS Event: %s", obs_event.get_records()[0].get_event_name())
     logger.info("OBS Event - Bucket: %s", obs_event.get_records()[0].get_s3().get_bucket().get_name())
 
-    return "ok"
+    output = {
+      "event_name": obs_event.get_records()[0].get_event_name(),
+      "bucketname": obs_event.get_records()[0].get_s3().get_bucket().get_name(),
+    }
+	
+    return output

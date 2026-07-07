@@ -50,3 +50,11 @@ Example
     :caption: :github_repo_master:`index.py <samples-doc/scratch-event-timer/src/index.py>`
 
 Full sample code is available in the :github_repo_master:`samples-doc/scratch-event-timer`.
+
+Package description
+-------------------
+
+.. automodule:: fg_timer_event
+   :members:
+   :undoc-members:
+   :show-inheritance:
