@@ -3,16 +3,16 @@ requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fg-kafkaopensource-event"
+name = "fg-dms4rocketmq-event"
 version = "1.0.0"
-description = "fg-kafkaopensource-event"
+description = "fg-dms4rocketmq-event"
 readme = "README.md"
 authors = [
     { name = "T Cloud Public", email = "otc_ecosystem_squad@t-systems.com" }
 ]
 license = "Apache-2.0"
 requires-python = ">=3.6"
-keywords = ["T Cloud Public", "sdk", "kafkaopensource", "functiongraph"]
+keywords = ["T Cloud Public", "sdk", "dms4rocketmq", "functiongraph"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",

@@ -1,3 +1,31 @@
 [build-system]
 requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "fg-obss3-event"
+version = "1.0.0"
+description = "fg-obss3-event"
+readme = "README.md"
+authors = [
+    { name = "T Cloud Public", email = "otc_ecosystem_squad@t-systems.com" }
+]
+license = "Apache-2.0"
+requires-python = ">=3.6"
+keywords = ["T Cloud Public", "sdk", "obss3", "functiongraph"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development"
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime"

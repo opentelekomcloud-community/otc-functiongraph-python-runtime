@@ -4,13 +4,13 @@ from os import path
 from setuptools import setup, find_packages
 
 
-NAME = "fg-obss3-event"
+NAME = "fg-dms4rocketmq-event"
 VERSION = "1.0.0"
 AUTHOR = "T Cloud Public Community"
 AUTHOR_EMAIL = "otc_ecosystem_squad@t-systems.com"
 URL = "https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime"
 
-DESCRIPTION = "fg-obss3-event"
+DESCRIPTION = "fg-dms4rocketmq-event"
 LICENSE = "Apache License 2.0"
 
 this_directory = path.abspath(path.dirname(__file__))
@@ -30,7 +30,7 @@ setup(
     author_email=AUTHOR_EMAIL,
     license=LICENSE,
     url=URL,
-    keywords=["T Cloud Public", "sdk", "obss3", "functiongraph"],
+    keywords=["T Cloud Public", "sdk", "dms4rocketmq", "functiongraph"],
     packages=find_packages(where="src", exclude=["tests*"]),
     install_requires=REQUIRES,
     package_dir={"": "src"},
