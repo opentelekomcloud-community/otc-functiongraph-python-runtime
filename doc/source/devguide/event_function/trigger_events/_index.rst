@@ -114,22 +114,32 @@ Python event classes for trigger events
 ------------------------------------------------------
 
 Python packages for trigger events are located in the ``fg-events`` directory of the repository.
-Each trigger event has its own package, which can be installed and imported separately.
+
+You can add all trigger event packages to your function's dependency package, or you can add only the trigger event packages that you need.
+
+To add all trigger event packages to your function's dependency package, you can use the following command:
+
+.. code-block:: bash
+   :caption: Install all trigger event packages
+
+   pip install fg-events@git+https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime.git@main#subdirectory=fg-events
+
+
+
+To add only the trigger event packages that you need, you can use the following command:
 
 For example, to use the Timer Event trigger, you can install the package using pip:
 
 .. code-block:: bash
+  :caption: Install specific trigger event packages
 
-   pip install fg-timer-event @ git+https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime.git@main#subdirectory=fg-events/fg-timer-event
+  pip install fg-timer-event@git+https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime.git@main#subdirectory=fg-events/fg-timer-event
 
 Then, you can import the Timer Event class in your code:
 
 .. code-block:: python
 
-   from fg_timer_event import TimerEvent
-
-Each trigger event package includes documentation and examples on how to use the event trigger
-in your FunctionGraph event functions.
+  from fg_timer_event import TimerEvent
 
 
 .. note::
