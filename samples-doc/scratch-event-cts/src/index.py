@@ -1,8 +1,6 @@
-# coding: utf-8
-
+# -*- coding:utf-8 -*-
 from fg_cts_event import CTSEvent
-
-
+ 
 def handler(event, context):
   logger = context.getLogger()
 
