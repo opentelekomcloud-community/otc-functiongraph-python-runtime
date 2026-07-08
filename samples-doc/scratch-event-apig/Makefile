@@ -53,5 +53,4 @@ test_deployed:
 	@echo "" 
 	# finished
 
-
-.PHONY: create_package tf_init tf_plan tf_apply tf_destroy test_deployed
+.PHONY: create_package tf_init tf_plan tf_apply tf_destroy test_deployed run_test

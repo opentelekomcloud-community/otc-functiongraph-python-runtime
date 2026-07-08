@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scratch-event-apig"
+version = "1.0.0"
+description = "OTC FunctionGraph Python sample – APIG event handler"
+readme = "README.md"
+authors = [
+    { name = "T Cloud Public Community", email = "otc_ecosystem_squad@t-systems.com" }
+]
+license = "Apache-2.0"
+requires-python = ">=3.6"
+keywords = ["T Cloud Public", "apig", "functiongraph", "sample"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development"
+]
+dependencies = [
+    "fg-apig-event @ git+https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime.git@main#subdirectory=fg-events/fg-apig-event"
+]
+
+[project.urls]
+Homepage = "https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime"
+
+[tool.setuptools.packages.find]
+where = ["src"]

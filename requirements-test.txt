@@ -1,0 +1,2 @@
+fg-runtime @ git+https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime.git@main#subdirectory=fg-runtime
+fg-events @ git+https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime.git@main#subdirectory=fg-events
