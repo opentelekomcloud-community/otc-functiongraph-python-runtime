@@ -34,7 +34,7 @@ class LoggerTests(unittest.TestCase):
 
         self.assertEqual(output.getvalue(), "")
 
-        logger.set_level("DEBUG")
+        logger.setLevel("DEBUG")
         with patch("fg_runtime.logger._get_time", return_value="2024-01-01T00:00:00.000Z"):
             output = io.StringIO()
             with redirect_stdout(output):

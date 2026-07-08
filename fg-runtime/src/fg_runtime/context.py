@@ -49,69 +49,137 @@ class Context:
         self.workflow_run_id = options.get("workflowRunID") or ""
         self.workflow_state_id = options.get("workflowStateID") or ""
 
-    def get_alias(self):
+    def getAlias(self):
+        """Method getAlias"""
         return self.alias
 
-    def get_project_id(self):
+    def getProjectID(self):
+        """Method getProjectID"""
         return self.project_id
 
-    def get_package(self):
+    def getPackage(self):
+        """Method getPackage"""
         return self.package
 
-    def get_function_name(self):
+    def getFunctionName(self):
+        """Method getFunctionName"""
         return self.function_name
 
-    def get_version(self):
+    def getVersion(self):
+        """Method getVersion"""
         return self.function_version
 
-    def get_memory_size(self):
+    # Get the memory size distributed the running function
+    def getMemorySize(self):
+        """Method getMemorySize"""
         return self.memory
 
-    def get_cpu_number(self):
+    # Get the number of cpu distributed to the running function the cpu
+    # number scale by millicores, one cpu cores equals 1000 millicores. In
+    # function stage runtime, every function have base of 200 millicores,
+    # and increased by memory size distributed to function. the offset is
+    # about Memory Size(M)/128 * 100
+    def getCPUNumber(self):
+        """Method getCPUNumber"""
         return self.cpu
 
-    def get_running_time_in_seconds(self):
+    # Gets the time distributed to the running of the function, when exceed
+    # the specified time, the running of the function would be stopped by force
+    def getRunningTimeInSeconds(self):
+        """Method getRunningTimeInSeconds"""
         return self.timeout
 
-    def get_user_data(self, key):
+    # Gets the user data,which saved in a map
+    def getUserData(self, key):
+        """Method getUserData"""
         return self.user_data.get(key)
 
-    def get_request_id(self):
+    def getRequestID(self):
+        """Method getRequestID"""
         return self.request_id
 
-    def get_remaining_time_in_milli_seconds(self):
+    # Gets the time remaining for this execution in milliseconds
+    # Returns time before task is killed
+    def getRemainingTimeInMilliSeconds(self):
+        """Method getRemainingTimeInMilliSeconds"""
         now = int(time.time() * 1000)
         return self.timeout + self.start_time - now
 
-    def get_access_key(self):
+    # Gets the Access key information of the tenant
+    def getAccessKey(self):
+        """Method getAccessKey"""
         return self.access_key
 
-    def get_secret_key(self):
+    # Gets the Secret Key information of the tenant
+    def getSecretKey(self):
+        """Method getSecretKey"""
         return self.secret_key
 
-    def get_security_access_key(self):
+    # Gets the Security Access key information of the tenant
+    def getSecurityAccessKey(self):
+        """Method getSecurityAccessKey"""
         return self.security_access_key
 
-    def get_security_secret_key(self):
+    # Gets the Security Secret Key information of the tenant
+    def getSecuritySecretKey(self):
+        """Method getSecuritySecretKey"""
         return self.security_secret_key
 
-    def get_workflow_id(self):
+    # Gets the workflow id information of the tenant
+    def getWorkflowID(self):
+        """Method getWorkflowID"""
         return self.workflow_id
 
-    def get_workflow_run_id(self):
+    # Gets the workflow run id information of the tenant
+    def getWorkflowRunID(self):
+        """Method getWorkflowRunID"""
         return self.workflow_run_id
 
-    def get_workflow_state_id(self):
+    # Gets the workflow state id information of the tenant
+    def getWorkflowStateID(self):
+        """Method getWorkflowStateID"""
         return self.workflow_state_id
 
-    def get_token(self):
+    def getToken(self):
+        """Method getToken"""
         return self.auth_token
 
-    def get_security_token(self):
+    def getSecurityToken(self):
+        """Method getSecurityToken"""
         return self.security_token
 
-    def get_logger(self):
+    # Gets the logger for user to log out in standard output, The Logger
+    # interface must be provided in SDK
+    def getLogger(self):
+        """Method getLogger"""
         return self.logger
 
+    def set_state(self, state):
+        """Method set_state"""
+        self.state = state
+
+    def get_state(self):
+        """Method get_state"""
+        return self.state
+
+    def set_instance_id(self, instance_id):
+        """Method set_instance_id"""
+        self.instance_id = instance_id
+
+    def get_instance_id(self):
+        """Method get_instance_id"""
+        return self.instance_id
+
+    def get_invoke_id(self):
+        """Method get_invoke_id"""
+        return self.invoke_id
+
+    def get_trace_id(self):
+        """Method get_trace_id"""
+        return self.request_id
+
+    def get_invoke_property(self):
+        """Method get_invoke_property"""
+        return self.invoke_property
 
 __all__ = ["Context"]

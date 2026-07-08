@@ -56,7 +56,7 @@ class Logger:
         self.invoke_id = invoke_id
         self.log_level = "INFO"
 
-    def set_level(self, level):
+    def setLevel(self, level):
         if level in {"INFO", "ERROR", "WARN", "DEBUG"}:
             self.log_level = level
 
