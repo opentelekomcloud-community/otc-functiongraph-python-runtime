@@ -105,7 +105,7 @@ you can import the Context class from the npm package as dev dependency and crea
 
  .. code-block:: bash
 
-    pip install fg_runtime@git+https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime.git@main#subdirectory=fg_runtime
+    pip install fg_runtime@git+https://github.com/opentelekomcloud-community/otc-functiongraph-python-runtime.git@main#subdirectory=fg-runtime
 
 
 .. warning::  
