@@ -1,11 +1,6 @@
 # otc-functiongraph-python-runtime
 T Cloud Public FunctionGraph runtime libraries for python
 
-> [!CAUTION]
-> Work in progress!
->
-
-
 ## Documentation
 
 For documentation see: [otc-functiongraph-python-runtime](https://opentelekomcloud-community.github.io/otc-functiongraph-python-runtime/)
