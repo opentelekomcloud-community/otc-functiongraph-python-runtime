@@ -102,13 +102,12 @@ The directory structure of the zip package should be as follows:
    |  └─ index.py            .py handler file (mandatory)
    └─ requirements.txt       Python project management file (mandatory)
 
-You can use the following pip command to install the dependencies listed in
+You can use the following make target to create the package, which will include the dependencies listed in
 the **requirements.txt** file:
 
 .. code-block:: console
 
   make create_package
-
 
 
 Create FunctionGraph function in console
@@ -117,12 +116,14 @@ Create FunctionGraph function in console
 1. Log in to the FunctionGraph console.
 2. Click **Create Function** and select **Create from scratch**.
 3. In **Basic Information**:
-   "FunctionType": **Event Function**.
-   "Region": select the region where you want to create the function.
-   "Function Name**: enter a **python_sample** as name for the function.
-   "Enterprise Project**: select **default**.
-   "Runtime**: select the Python runtime version **Python 3.10**.
-   "Agency": select **Use no agency**
+
+   - "FunctionType": **Event Function**.
+   - "Region": select the region where you want to create the function.
+   - "Function Name**: enter a **python_sample** as name for the function.
+   - "Enterprise Project**: select **default**.
+   - "Runtime**: select the Python runtime version **Python 3.10**.
+   - "Agency": select **Use no agency**
+   
 4. Click **Create Function**.
 5. Upload the created **code.zip** file to the function by
    clicking **Upload** > **Local ZIP**.

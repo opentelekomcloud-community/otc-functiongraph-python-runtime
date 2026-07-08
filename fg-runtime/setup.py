@@ -33,7 +33,7 @@ setup(
     keywords=["T Cloud Public", "sdk", "runtime", "functiongraph"],
     packages=find_packages(where="src", exclude=["tests*"]),
     install_requires=REQUIRES,
-    package_dir={"": "src"},
+    package_dir={"fg_runtime": "src/fg_runtime"},
     python_requires=">=3.6",
     include_package_data=True,
     classifiers=[
