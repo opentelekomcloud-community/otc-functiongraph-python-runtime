@@ -8,14 +8,14 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from fg_runtime.logger import Logger, MAX_SINGLE_LOG_SIZE
+from fn_runtime_context.logger import Logger, MAX_SINGLE_LOG_SIZE
 
 
 class LoggerTests(unittest.TestCase):
     def test_info_formats_percent_style_messages(self):
         logger = Logger("request-1", "invoke-1")
 
-        with patch("fg_runtime.logger._get_time", return_value="2024-01-01T00:00:00.000Z"):
+        with patch("fn_runtime_context.logger._get_time", return_value="2024-01-01T00:00:00.000Z"):
             output = io.StringIO()
             with redirect_stdout(output):
                 logger.info("Function Name: %s", "demo")
@@ -35,7 +35,7 @@ class LoggerTests(unittest.TestCase):
         self.assertEqual(output.getvalue(), "")
 
         logger.setLevel("DEBUG")
-        with patch("fg_runtime.logger._get_time", return_value="2024-01-01T00:00:00.000Z"):
+        with patch("fn_runtime_context.logger._get_time", return_value="2024-01-01T00:00:00.000Z"):
             output = io.StringIO()
             with redirect_stdout(output):
                 logger.debug("visible")
@@ -48,7 +48,7 @@ class LoggerTests(unittest.TestCase):
     def test_warn_and_error_emit_expected_levels(self):
         logger = Logger("request-1")
 
-        with patch("fg_runtime.logger._get_time", return_value="2024-01-01T00:00:00.000Z"):
+        with patch("fn_runtime_context.logger._get_time", return_value="2024-01-01T00:00:00.000Z"):
             output = io.StringIO()
             with redirect_stdout(output):
                 logger.warn("warning")
@@ -62,7 +62,7 @@ class LoggerTests(unittest.TestCase):
         logger = Logger("request-1")
         long_message = "x" * (MAX_SINGLE_LOG_SIZE + 5)
 
-        with patch("fg_runtime.logger._get_time", return_value="2024-01-01T00:00:00.000Z"):
+        with patch("fn_runtime_context.logger._get_time", return_value="2024-01-01T00:00:00.000Z"):
             output = io.StringIO()
             with redirect_stdout(output):
                 logger.info(long_message)

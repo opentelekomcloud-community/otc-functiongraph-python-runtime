@@ -1,4 +1,4 @@
-"""Public package exports for fg_runtime."""
+"""Public package exports for fn_runtime_context."""
 
 from .context import Context
 from .logger import Logger
