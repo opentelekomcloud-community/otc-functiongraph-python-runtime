@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from fn_runtime_context import Context, Logger
+from fn_runtime_context import Context
 
 
 class ContextTests(unittest.TestCase):
@@ -55,9 +55,11 @@ class ContextTests(unittest.TestCase):
         self.assertEqual(context.getWorkflowID(), "workflow-1")
         self.assertEqual(context.getWorkflowRunID(), "workflow-run-1")
         self.assertEqual(context.getWorkflowStateID(), "workflow-state-1")
-        self.assertIsInstance(context.getLogger(), Logger)
+        self.assertIsNotNone(context.getLogger())
         self.assertEqual(context.getRunningTimeInSeconds(), 10000)
         self.assertLessEqual(context.getRemainingTimeInMilliSeconds(), 10000)
+        
+        context.getLogger().info("Test log message")
 
     def test_context_defaults_when_optional_values_are_missing(self):
         context = Context({"funcEnv": {"RUNTIME_USERDATA": "not-json"}})
@@ -71,7 +73,7 @@ class ContextTests(unittest.TestCase):
         self.assertIsNone(context.getUserData("missing"))
         self.assertEqual(context.getRequestID(), "")
         self.assertEqual(context.getRunningTimeInSeconds(), 3000)
-        self.assertIsInstance(context.getLogger(), Logger)
+        self.assertIsNotNone(context.getLogger())
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@
 import json
 import time
 
-from .logger import Logger
+from .fn_runtime_log import acquire_function_logger
 
 
 def _parse_json(raw_value=None):
@@ -37,7 +37,8 @@ class Context:
         self.security_secret_key = options.get("securitySecretKey") or ""
         self.auth_token = options.get("authToken") or ""
         self.security_token = options.get("securityToken") or ""
-        self.logger = Logger(self.request_id, options.get("invokeID"))
+        #self.logger = Logger(self.request_id, options.get("invokeID"))
+        self.logger = acquire_function_logger(self.request_id, options.get("invokeID"))
         self.invoke_id = options.get("invokeID")
         self.invoke_property = None
         self.from_task = False
