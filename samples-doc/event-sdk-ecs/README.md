@@ -51,7 +51,7 @@ Configure function:
 - `Environment variables`
     - **INSTANCE_ID** = **instance id of ECS instance to start**
     - **REGION** = **your region**
-    - **ECS_ENDPOINT** = **https://ecs.eu-de.otc.t-systems.com**
+    - **ECS_ENDPOINT** = **ecs.eu-de.otc.t-systems.com**
 
 - `Triggers` - create stop trigger to stop instance every day at 17:00:
     - Click `Create Trigger`:

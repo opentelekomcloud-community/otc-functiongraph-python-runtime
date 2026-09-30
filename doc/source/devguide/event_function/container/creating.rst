@@ -131,7 +131,7 @@ You should see the response from the server indicating that the event was proces
 
 .. code-block:: json
 
-   {"message":"Event processed successfully","inputEvent":{"key":"value"}}
+   {"body":"/invoke success","headers":{"Content-Type":"application/json"},"inputEvent":{"key":"value"},"isBase64Encoded":false,"statusCode":200}
 
 
 Step 2: Build the Container Image
@@ -263,7 +263,7 @@ You should see output similar to the following:
 
 .. code-block:: json
 
-   {"message":"Event processed successfully","inputEvent":{"key":"Hello World of FunctionGraph"}}
+   {"body":"/invoke success","headers":{"Content-Type":"application/json"},"inputEvent":{"key":"Hello World of FunctionGraph"},"isBase64Encoded":false,"statusCode":200}
 
 
 Step 3: Upload the Container Image to SWR (SoftWare Repository for Container)
@@ -337,7 +337,7 @@ Upload the image to SWR either using **shell commands** or the Makefile target *
 .. tabs::
 
    .. tab:: Pushing using shell commands
-        Run the following commands in the **container-event** folder to upload the image to SWR:
+        Run the following commands in the **container-event-flask** folder to upload the image to SWR:
 
         .. code-block:: shell
           :caption: **1. Login to SWR**

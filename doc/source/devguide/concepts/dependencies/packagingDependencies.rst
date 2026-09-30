@@ -38,8 +38,14 @@ The following uses **Python 3.10** as an example to describe how to create a **f
 Full example for fg-events dependency package
 ------------------------------------------------
 
-This example deploys :github_repo_master:`fg_events <fg-events>` dependency packages for Python all runtime versions using Terraform.
+This example deploys :github_repo_master:`fg_events <fg-events>` dependency packages for 4 Python runtime versions using Terraform:
 
-Additionally, a simple timer event function using the dependency is deployed.
+    .. code-block:: bash
+
+        make tf_init & make tf_apply 
+
+Additionally, a simple timer event function using the dependency and a test event are deployed.
+
+For details on setting up Terraform, see :doc:`/devguide/deployment/terraform/setuptf`.
 
 For code, see :github_repo_master:`samples-doc/dependency-fg-events <samples-doc/dependency-fg-events>` directory.

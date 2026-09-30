@@ -1,8 +1,8 @@
 Setting up the Python project for event functions
 ==========================================================
 
-The following examples assumes that you have Python 3.10 installed
-you are using pip as the package manager and linux.
+The following examples assumes that you have Python 3.10 installed,
+you are using pip as the package manager, and Linux.
 
 
 Creating a Python project

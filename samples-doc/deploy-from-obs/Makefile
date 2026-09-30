@@ -43,7 +43,7 @@ tf_destroy:
 		-var-file="variables.tfvars"
 
 
-test_deployed:
+test_deployed_sync:
   # getting Token for authentication from Username/Password...
 	$(eval OTC_X_AUTH_TOKEN := $(shell ../../utils/tokenFromUsername.sh))
 	# getting the Function URN from terraform output...
@@ -58,4 +58,19 @@ test_deployed:
 	# finished
 
 
-.PHONY: create_package tf_init tf_plan tf_apply tf_destroy test_deployed test_deployed_apig_post
+test_deployed_async:
+  # getting Token for authentication from Username/Password...
+	$(eval OTC_X_AUTH_TOKEN := $(shell ../../utils/tokenFromUsername.sh))	
+	# getting the Function URN from terraform output...
+	$(eval MY_FUNCTION_URN := $(shell terraform -chdir=terraform output -raw MY_FUNCTION_URN))
+	# calling the deployed function via FunctionGraph API...
+	@curl -X POST \
+	 -H "Content-Type: application/json" \
+	 -H "x-auth-token: $(OTC_X_AUTH_TOKEN)" \
+	 -d '{"key":"Hello World of FunctionGraph"}' \
+	 https://functiongraph.$(OTC_SDK_REGION).otc.t-systems.com/v2/$(OTC_SDK_PROJECTID)/fgs/functions/$(MY_FUNCTION_URN):latest/invocations-async
+	@echo "" 
+	# finished
+
+
+.PHONY: create_package tf_init tf_plan tf_apply tf_destroy test_deployed_sync test_deployed_async

@@ -42,6 +42,12 @@ Following sample code demonstrates how to invoke a FunctionGraph event function 
 See :otc_fg_api:`Executing a Function Synchronously <api/function_invocation/executing_a_function_synchronously.html#functiongraph-06-0125>`
 in FunctionGraph API reference for more details about synchronous invocation.
 
+First, install dependencies for the sample code:
+
+.. code-block:: bash
+
+  pip install -r requirements.txt
+
 .. tabs::
   
     .. tab:: Code using Python "requests"
@@ -79,10 +85,8 @@ In both cases, you should see an output similar to the following in the terminal
 .. code-block:: bash
   :caption: Sample output of synchronous invocation using AK/SK
 
-  Result:  {"statusCode":200,"headers":{"Content-Type":"application/json"},"isBase64Encoded":false,"body":"{\"key\":\"Hello World\"}"}
+  Result:  {"statusCode":200,"headers":{"Content-Type":"application/json"},"isBase64Encoded":false,"body":"{\"key\": \"Hello T-Cloud Public World - SYNC\"}"}
   Log:  2026-03-17T10:13:22Z Start invoke request '960d089c-c812-4fe7-9997-a72f773e4bcb', version: latest
-  2026-03-17T10:13:22Z 960d089c-c812-4fe7-9997-a72f773e4bcb INFO Function name: python-sample-invoke-function
-  2026-03-17T10:13:22Z 960d089c-c812-4fe7-9997-a72f773e4bcb INFO Key value from event: Hello World
   2026-03-17T10:13:22Z Finish invoke request '960d089c-c812-4fe7-9997-a72f773e4bcb', duration: 2.049ms, billing duration: 3ms, memory used: 36.535MB, billing memory: 128MB, cpu used: 0.300U, storage used: 0.039MB
 
 
@@ -131,4 +135,5 @@ In both cases, you should see an output similar to the following in the terminal
 .. code-block:: bash
    :caption: Sample output of asynchronous invocation using AK/SK
 
+   Status: 202
    Response:  {"request_id": "3d1a4f5a-b4e2-4429-80c8-3d82d2fe8791"}

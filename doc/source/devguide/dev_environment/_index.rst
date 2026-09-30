@@ -26,7 +26,7 @@ Install Python
 To build and run the Python runtime for FunctionGraph, you need to install Python.
 The Python version depends on the version of the Python runtime you are using when deploying your functions.
 
-You can download Python from the official website: `https://www.python.org/downloads/`
+You can download Python from `the official website <https://www.python.org/downloads/>`_.
 
 Install an IDE
 ---------------------------------

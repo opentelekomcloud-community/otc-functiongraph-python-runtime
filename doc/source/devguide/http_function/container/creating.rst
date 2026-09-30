@@ -54,9 +54,9 @@ Install the dependencies using pip:
 Implementing the function
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Next, create following file:
+Next, create following files:
 
-- src/main.py for the function entry
+- src/app.py for the function entry
 
 
 .. literalinclude:: ../../../../../samples-doc/container-http-fastapi/src/app.py
@@ -65,6 +65,14 @@ Next, create following file:
 
 
 In this code, we create a FastAPI application that listens on port 8000.
+
+
+- src/api/items.py for the sample FastAPI router.
+
+
+.. literalinclude:: ../../../../../samples-doc/container-http-fastapi/src/api/items.py
+   :language: python
+   :caption: :github_repo_master:`src/api/items.py <samples-doc/container-http-fastapi/src/api/items.py>`
 
 .. We define following endpoints:
 
@@ -435,10 +443,10 @@ Click **Test** to execute the function and you should see the following output i
 .. code-block:: json
 
   {
-    "body": "SGVsbG8gV29ybGQsIHVzZXIh",
+    "body": "eyJtZXNzYWdlIjoiSGVsbG8sIEhlbGxvIFdvcmxkISJ9",
     "headers": {
       "Content-Length": [
-        "18"
+        "33"
       ],
       "Content-Type": [
         "application/json; charset=utf-8"
@@ -451,17 +459,17 @@ Click **Test** to execute the function and you should see the following output i
     "isBase64Encoded": true
   }
 
-The response body is Base64-encoded. After decoding, you will get the string "Hello World, user!".
+The response body is Base64-encoded. After decoding, you will get the string "Hello World!".
 
 For **get_index** test event the output should be:
 
 .. code-block:: json
 
   {
-    "body": "SGVsbG8gd29ybGQsIEpvaG4h",
+    "body": "eyJtZXNzYWdlIjoiSGVsbG8sIEpvaG4hIn0=",
     "headers": {
       "Content-Length": [
-        "18"
+        "26"
       ],
       "Content-Type": [
         "application/json; charset=utf-8"

@@ -77,7 +77,7 @@ invoked whenever the corresponding event is detected.
 
         For instructions on triggering and using the distributed messaging Kafka, please refer to:
 
-        - Use :ref:`Kafka triggers <devguide_event_function_trigger_events_dms4kafka>`.
+        - Using :ref:`Kafka triggers <devguide_event_function_trigger_events_dms4kafka>`.
         - Using :ref:`open-source Kafka triggers <devguide_event_function_trigger_events_kafkaopensource>`       
         
     * - Log Tank Service (LTS)
@@ -126,9 +126,7 @@ To add all trigger event packages to your function's dependency package, you can
 
 
 
-To add only the trigger event packages that you need, you can use the following command:
-
-For example, to use the Timer Event trigger, you can install the package using pip:
+To add only the trigger event packages that you need, you can use the following command - for example, to use the Timer Event trigger, you can install the package using pip:
 
 .. code-block:: bash
   :caption: Install specific trigger event packages

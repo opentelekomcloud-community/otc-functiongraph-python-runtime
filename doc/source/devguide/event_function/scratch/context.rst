@@ -98,10 +98,10 @@ Context interface
     * - getAlias()
       - Obtains function alias.
 
-For context.py, see :github_repo_master:`context.py <fg-runtime/src/context.py>`.
+For context.py, see :github_repo_master:`context.py <fg-runtime/src/fn_runtime_context/context.py>`.
 
 To work with the context object in development environment,
-you can import the Context class from the npm package as dev dependency and create an instance of it.
+you can import the Context class from the pip package as dev dependency and create an instance of it.
 
  .. code-block:: bash
 

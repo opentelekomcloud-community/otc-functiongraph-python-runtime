@@ -10,7 +10,7 @@ events). FunctionGraph function code can be customized, analyzed, or loaded
 into other systems. 
 
 For the use of LTS log triggers, please refer to
-:docs_otc:`Using a LTS Trigger <function-graph/umn/creating_triggers/using_an_lts_trigger.html>`.
+:docs_otc:`Using an LTS Trigger <function-graph/umn/creating_triggers/using_an_lts_trigger.html>`.
 
 Example LTS Event
 -----------------

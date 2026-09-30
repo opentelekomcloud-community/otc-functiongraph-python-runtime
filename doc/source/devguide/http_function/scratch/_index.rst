@@ -45,9 +45,8 @@ You can use any Python web framework or library to implement the function code.
 
 The following is a sample code using Python built-in HTTP module.
 
-In the code editor, replace the default code for file `index.py` with the following
+In the code editor, delete the default `index.js` file, create a new folder `src` and a new file `index.py` inside with the following
 code, and click **Deploy** to save the code.
-
 
 .. literalinclude:: ../../../../../samples-doc/scratch-http/src/index.py
    :caption: index.py

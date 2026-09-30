@@ -112,13 +112,13 @@ Create a function with following content to call another FunctionGraph function:
 Deployment
 ---------------------
 
-Create a deployment package using **make create-package** command
+Create a deployment package using **make create_package** command
 and deploy the package to FunctionGraph using the console as 
 event function from scratch using Python 3.10.
 
 Configure the function:
 
-- set the handler name as **index.handler**.
+- set the handler name as **src/index.handler**.
 - specify an agency with permission to **invoke** FunctionGraph
 - and set the URN of the function to be called as Environment variable
   with key **CALL_FG_URN**.

@@ -4,8 +4,8 @@ Setting up the Python project for HTTP functions
 .. toctree::
    :hidden:
 
-The following examples assumes that you have Python 3.10 installed
-you are using linux as operating system.
+The following examples assumes that you have Python 3.10 installed and
+you are using Linux as operating system.
 
 Project structure
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -121,7 +121,7 @@ The Zip package should have following structure:
   :caption: deployment zip file structure
 
   /code.zip
-   ├─ requirement 1           # NPM third-party dependencies (optional)
+   ├─ requirement 1          # pip third-party dependencies (optional)
    |  └─ ...
    ├─ src
    |  └─ index.py            # main function code file (mandatory)
@@ -177,6 +177,38 @@ Create a test event with the following parameters:
 
 
 
+Click **Test** to execute the function with the test event created,
+and you should see the following output in the ``Execution Result`` section
+
+.. code-block:: json
+   :caption: Execution Result GET
+
+   {
+      "body": "eyJtZXNzYWdlIjoiSGVsbG8gZnJvbSBzY3JhdGNoLWh0dHAgc2FtcGxlISJ9Cg==",
+      "headers": {
+         "Content-Length": [
+               "46"
+         ],
+         "Content-Type": [
+               "application/json"
+         ],
+         "Date": [
+               "Mon, 21 Sep 2026 09:44:27 GMT"
+         ],
+         "Server": [
+               "Werkzeug/3.1.8 Python/3.10.0"
+         ]
+      },
+      "statusCode": 200,
+      "isBase64Encoded": true
+   }
+
+The body in the output is base64 encoded. After decoding, you should see the following content:
+
+.. code-block:: html
+
+    {"message":"Hello from scratch-http sample!"}
+
 
 Test POST /index
 !!!!!!!!!!!!!!!!
@@ -187,4 +219,39 @@ Create a test event with the following parameters:
 - **Event Template**: API Gateway (Dedicated)
 
 .. literalinclude:: ../../../../../samples-doc/scratch-http-flask/resources/apig_post_index.json
-   :caption: apig_post_index.json 
+   :caption: apig_post_index.json
+
+
+Click **Test** to execute the function with the test event created,
+and you should see the following output in the ``Execution Result`` section
+
+
+.. code-block:: json
+   :caption: Execution Result POST
+
+   {
+      "body": "eyJib2R5IjoiXCIvaW5kZXggc3VjY2Vzc1wiIiwiaGVhZGVycyI6eyJDb250ZW50LVR5cGUiOiJhcHBsaWNhdGlvbi9qc29uIn0sImlzQmFzZTY0RW5jb2RlZCI6ZmFsc2UsInN0YXR1c0NvZGUiOjIwMH0K",
+      "headers": {
+         "Content-Length": [
+               "117"
+         ],
+         "Content-Type": [
+               "application/json"
+         ],
+         "Date": [
+               "Mon, 21 Sep 2026 09:46:43 GMT"
+         ],
+         "Server": [
+               "Werkzeug/3.1.8 Python/3.10.0"
+         ]
+      },
+      "statusCode": 200,
+      "isBase64Encoded": true
+   }
+
+The body in the output is base64 encoded. After decoding, you should see the following content:
+
+.. code-block:: html
+
+    {"body":"\"/index success\"","headers":{"Content-Type":"application/json"},"isBase64Encoded":false,"statusCode":200} 
+

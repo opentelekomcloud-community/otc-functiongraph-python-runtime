@@ -148,8 +148,8 @@ The return value of the function output:
 
 * **Successful execution**: The defined function output information is returned.
 
-* **Failed execution**: Due to an thrown exception (errorType(message)),
-  a error message JSON object containing
+* **Failed execution**: Due to a thrown exception (errorType(message)),
+  an error message JSON object containing
   **errorMessage**, **errorType** and **stackTrace** is returned.
 
   The format is as follows:

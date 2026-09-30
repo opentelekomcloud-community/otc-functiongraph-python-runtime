@@ -8,7 +8,7 @@ Deploy FunctionGraph Event Function from OBS
    :hidden:
 
 This sample demonstrates how to deploy a simple event function to 
-FunctionGraph with **code from OBS** using terraform.
+FunctionGraph with **code from OBS** using Terraform.
 
 This approach is used, if your unpacked FunctionGraph deployment package is **less than 40MB**.
 

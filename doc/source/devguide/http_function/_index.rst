@@ -86,11 +86,11 @@ by functions by default.
 
        .. note:: **x-cff-project-id in the header currently returns always "sn".** 
 
-          To get correct Project ID use instead:
+          To get correct Project ID use a preset system environment variable instead:
 
           .. code-block:: python
 
-              region = os.environ.get("RUNTIME_PROJECT_ID")
+              project = os.environ.get("RUNTIME_PROJECT_ID")
 
 
    * - x-cff-package
